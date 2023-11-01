@@ -66,4 +66,12 @@ class DiscountedProduct extends Product {
         }
         $this->discount = $discount;
     }
+
+    /**
+     * Display discounted product information, including handling exceptions.
+     */
+    public function displayInfo()
+    {
+        parent::displayInfo();
+    }
 }
