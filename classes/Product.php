@@ -119,4 +119,28 @@ class Product {
         $description = trim($description);
         $this->description = $description;
     }
+
+    /**
+     * Display product information, including handling exceptions.
+     */
+    public function displayInfo()
+    {
+        echo $this->getName() . " Info:\n";
+        try {
+            echo $this->getInfo();
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+        echo "\n\n";
+    }
+    public function displayInfo()
+    {
+        echo $this->getName() . " Info:\n";
+        try {
+            echo $this->getInfo();
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+        echo "\n\n";
+    }
 }
