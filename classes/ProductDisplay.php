@@ -21,17 +21,22 @@ class ProductDisplay {
     /**
      * Display information about the product.
      */
-    public function displayInfo() {
-        echo "Product Info:\n";
-        echo "Name: {$this->product->getName()}\n";
-        echo "Price: {$this->product->getPrice()}\n";
-        echo "Description: {$this->product->getDescription()}\n";
+    public function displayInfo(): void {
+        try {
+            echo "Product Info:\n";
+            echo "Name: {$this->product->getName()}\n";
+            echo "Price: {$this->product->getPrice()}\n";
+            echo "Description: {$this->product->getDescription()}\n";
 
-        if ($this->product instanceof DiscountedProduct) {
-            // Display discounted price for DiscountedProduct
-            echo "Discounted Price: {$this->product->getDiscountedPrice()}\n";
+            if ($this->product instanceof DiscountedProduct) {
+                // Display discounted price for DiscountedProduct
+                echo "Discounted Price: {$this->product->getDiscountedPrice()}\n";
+            }
+
+            echo "\n";
+        } catch (Throwable $e) {
+            echo 'Error: ' . $e->getMessage() . "\n";
         }
-
-        echo "\n";
     }
 }
+

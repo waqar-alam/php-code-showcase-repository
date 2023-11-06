@@ -22,29 +22,33 @@ class Product {
      * @param string $name        The name of the product.
      * @param float  $price       The price of the product.
      * @param string $description The description of the product.
+     *
+     * @throws InvalidArgumentException If input validation fails.
      */
     public function __construct(string $name, float $price, string $description) {
-        // Validate and sanitize data during object creation
-        $this->setName($name);
-        $this->setPrice($price);
-        $this->setDescription($description);
+        try {
+            $this->setName($name);
+            $this->setPrice($price);
+            $this->setDescription($description);
+        } catch (InvalidArgumentException $e) {
+            throw new InvalidArgumentException('Failed to create the product: ' . $e->getMessage(), 0, $e);
+        }
     }
 
     /**
      * Get product information as JSON.
      *
      * @return string JSON representation of the product data.
-     * @throws Exception if JSON encoding fails.
+     *
+     * @throws Exception If JSON encoding fails.
      */
     public function getInfo(): string {
-        // Create an associative array with validated product data
         $data = [
             'name' => $this->getName(),
             'price' => $this->getPrice(),
             'description' => $this->getDescription(),
         ];
 
-        // Encode the data as JSON and handle potential encoding errors
         $json = json_encode($data, JSON_PRETTY_PRINT);
         if ($json === false) {
             throw new Exception('JSON encoding failed.');
@@ -66,10 +70,10 @@ class Product {
      * Set the name of the product.
      *
      * @param string $name The product name.
-     * @throws InvalidArgumentException if the name is empty.
+     *
+     * @throws InvalidArgumentException If the name is empty after trimming.
      */
     public function setName(string $name): void {
-        // Validate and sanitize name (e.g., trim and ensure it's not empty)
         $name = trim($name);
         if (empty($name)) {
             throw new InvalidArgumentException('Name cannot be empty.');
@@ -90,10 +94,10 @@ class Product {
      * Set the price of the product.
      *
      * @param float $price The product price.
-     * @throws InvalidArgumentException if the price is not a positive value.
+     *
+     * @throws InvalidArgumentException If the price is not a positive value.
      */
     public function setPrice(float $price): void {
-        // Validate price (e.g., ensure it's a positive value)
         if ($price < 0) {
             throw new InvalidArgumentException('Price must be a positive value.');
         }
@@ -115,7 +119,6 @@ class Product {
      * @param string $description The product description.
      */
     public function setDescription(string $description): void {
-        // Sanitize description (e.g., trim)
         $description = trim($description);
         $this->description = $description;
     }
