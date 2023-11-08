@@ -1,5 +1,7 @@
 <?php
 
+namespace MyPHPCodeShowcase\Classes;
+
 class Product {
     /**
      * @var string The name of the product.

@@ -1,5 +1,7 @@
 <?php
 
+namespace MyPHPCodeShowcase\Interfaces;
+
 /**
  * Interface DisplayStrategyInterface defines the contract for displaying product information.
  */

@@ -1,5 +1,7 @@
 <?php
 
+namespace MyPHPCodeShowcase\Classes;
+
 /**
  * Class ProductDisplay displays product information.
  */

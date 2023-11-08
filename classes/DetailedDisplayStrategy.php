@@ -1,5 +1,9 @@
 <?php
 
+namespace MyPHPCodeShowcase\Classes;
+
+use MyPHPCodeShowcase\Classes\Interfaces\DisplayStrategyInterface;
+
 /**
  * Class DetailedDisplayStrategy displays detailed product information.
  */

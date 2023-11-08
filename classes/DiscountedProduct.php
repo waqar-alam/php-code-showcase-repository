@@ -1,5 +1,7 @@
 <?php
 
+namespace MyPHPCodeShowcase\Classes;
+
 /**
  * Class DiscountedProduct represents a discounted product that extends the Product class.
  */
